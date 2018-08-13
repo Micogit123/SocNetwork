@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Login</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+   <div class="card card mx-auto col-xs-12 col-sm-6 col-md-6 col-lg-4">
+     <div class="card-body ">
+        <p class="card-text">
+        	<h1><i class="fa fa-lock" aria-hidden="true"></i> Login </h1><hr>
+				{{form.errors}}
+				<form method="post">
+					{% csrf_token %}
+					<p><i class="fa fa-user-circle-o"></i> Username:
+						<br> <input type="text" name="username" autofocus="" maxlength="254" required="" id="id_username" placeholder=" myusername"></p>
+					<p><i class="fa fa-eye" aria-hidden="true"></i> Password: 
+						<br><input type="password" name="password" required="" id="id_password" placeholder=" eg. mypass123"></p>
+					<button type="submit" class="btn btn-primary"> Login
+					</button>						
+					<hr>
+					<p>Not a member? <a href="/register/">Register</a></p>
+		         	<p>Forgot <a href="/reset-password/">Password?</a></p>
+				</form>
+       	 </p>
+      </div>
+   </div>
+</div>
+{% endblock %}

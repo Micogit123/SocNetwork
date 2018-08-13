@@ -1,0 +1,56 @@
+body{
+	background-color: #697475;
+	color: #FBEDED;
+	background-image: url("/static/images/back.jpg");
+	background-repeat: no-repeat;
+	background-size: 1530px 830px;
+}
+
+h1{
+	color: #2D2825;
+	padding-top: 15px;
+}
+
+.table{
+	width: 100%;
+}
+.imag{
+	padding-left: 15px;
+	padding-right: 15px; 
+}
+h2{
+	padding-top: 15px;
+	padding-left: 15px;
+}
+#home_par{
+	color: #2D2825;
+	padding-left: 15px;
+	padding-top:  15px;
+	font-size: 250%;
+}
+#log_in{
+	font-size: 125%;
+	padding-top: 15px;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu{
+	background-color: #D0D0D0;
+}
+
+.dropdown-item{
+	color: #292929;
+}
+.card{
+	margin-top: 50px;
+	border-radius: 25px;
+	background-color: #E9E9ED;
+}
+.card-body{
+	align-self: center;
+	color: black;
+	border-radius: 25px;
+}

@@ -1,0 +1,16 @@
+.idea
+html_docs
+*.pyc
+*.pyo
+*.sqlite3
+*.sublime-project
+*.sublime-workspace
+nginx_error.log
+nginx_access.log
+npm-debug.log
+nginx/logs/*.*
+nginx/*.pid
+nginx/nginx.conf
+nginx/sites-enabled
+.venv/
+venv/

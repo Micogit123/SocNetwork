@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Register</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="card card mx-auto col-xs-16 col-sm-12 col-md-8 col-lg-6">
+    <div class="card-body ">
+      <p class="card-text">
+    		<h1><i class="fa fa-user-plus" aria-hidden="true"></i> Register</h1><hr>
+    		{{user_form.errors}}
+    		 <form method="post" data-cities-url="{% url 'cities' %}">
+       		{% csrf_token %}			
+    			<p><i class="fa fa-user" aria-hidden="true"></i> Username: {{user_form.username}}*</p>
+    			<p><i class="fa fa-user" aria-hidden="true"></i> First name: {{user_form.first_name}}</p>
+    			<p><i class="fa fa-user" aria-hidden="true"></i> Last name: {{user_form.last_name}}</p>
+          <p><i class="fa fa-flag" aria-hidden="true"></i> Country:
+            <select id="countries" name="country" required type="text">
+            <option value="">----------------</option>
+              {% for x in country %}
+        			  <option > {{x.name}}</option>
+              {% endfor %}
+            </select>*
+             <i class="fa fa-globe" aria-hidden="true"></i> City:
+            <select id="cities" name="city" required type="text">
+            <option value="">-------------</option></select>*
+          </p>
+    			<p><i class="fa fa-envelope" aria-hidden="true"></i> Email: {{user_form.email}}*</p>
+    			<p><i class="fas fa-key"></i> Password: {{user_form.password1}}*</p>
+    			<p><i class="fas fa-key"></i> Password confirmation: {{user_form.password2}}*</p>
+          <button type="submit" class="btn btn-primary">Register</button>
+    		</form>
+      </p>
+    </div>
+  </div>
+</div>
+
+  <script>
+      $('#countries').on('change', function() {
+
+          $('#cities').find('option:not(:first)').remove();
+
+          $.ajax({
+            url: '/cities/',
+            data: {
+              'country': this.value
+            },
+            dataType: 'json',
+            success: function (data) {
+
+              var json_cities = jQuery.parseJSON(data);
+
+               for(var i = 0; i < json_cities.length; i++){
+                  $('#cities').append('<option>' + json_cities[i].fields.name + '</option>');
+               }
+            }
+          });
+
+      })
+  </script>
+
+
+{% endblock %}
