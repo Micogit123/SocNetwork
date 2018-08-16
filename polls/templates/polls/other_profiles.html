@@ -21,15 +21,16 @@
 	  <tbody>
 	  	{% for user in users %}
 	    <tr>
-	      <th scope="row">{{forloop.counter}}</th>
-	      <td>{{user.username}}</td>
-	      <td>{{user.first_name}}</td>
-	      <td>{{user.last_name}}</td>
-	      <td>{{user.email}}</td>
-	      <td>{{data.country}}</td>
-	      <td>{{data.city}}</td>
-	    </tr>
-	    {% endfor %}
+		      <th scope="row">{{forloop.counter}}</th>
+		      <td>{{user.username}}</td>
+		      <td>{{user.first_name}}</td>
+		      <td>{{user.last_name}}</td>
+		      <td>{{user.email}}</td>
+		      <td>{{user.userinformation.city}}</td>
+		      <td>{{user.userinformation.country}}</td>
+		      
+      	{% endfor %}
+
 	  </tbody>
 	</table>
 </div>

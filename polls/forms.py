@@ -8,15 +8,6 @@ from .models import UserInformation, City
 YEARS= [x for x in range(1940,2019)]
 
 
-class LoginModelForm(ModelForm):
-    class Meta:
-        model = User
-        fields = ('username', 'password')
-        widgets = {
-            'username': TextInput(attrs={'placeholder': ' *myusername'})
-        }
-
-
 class RegisterForm(forms.Form):
     username = forms.CharField(required=True, widget=forms.TextInput
                             (attrs={'placeholder': ' myusername'}))

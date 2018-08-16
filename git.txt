@@ -1,0 +1,5 @@
+
+ 1736  git remote add https://github.com/Micogit123/SocNetwork.git origin
+ 1737  git remote add origin https://github.com/Micogit123/SocNetwork.git 
+ 1738  git remote -v
+ 1739  git push origin master

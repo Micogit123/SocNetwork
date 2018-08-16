@@ -69,7 +69,7 @@ def change_password(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            return render(request, 'polls/profile.html', {'change_pass': True})
+            return redirect('profile')
 
     args = {'change_password_form': form}
     return render(request, 'polls/change_password.html', args)
@@ -77,9 +77,8 @@ def change_password(request):
 
 @login_required(login_url='/login')
 def other_profiles(request):
-    data = UserInformation.objects.get(user=request.user)
-    users = User.objects.filter(~Q(id=request.user.id))
-    args = {'users': users, 'data': data}
+    users = User.objects.select_related('userinformation').filter(~Q(id=request.user.id))
+    args = {'users': users}
     return render(request, 'polls/other_profiles.html', args)
 
 
@@ -87,7 +86,7 @@ def other_profiles(request):
 def delete_profile(request):
     request.user.delete() 
     return render(request, 'polls/delete_profile.html')
- 
+
 
 def cities(request):
     country = request.GET.get('country', None)
