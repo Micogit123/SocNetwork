@@ -20,4 +20,5 @@ urlpatterns = [
     path('other_profiles/', views.other_profiles, name="other_profiles"),
     path('delete_profile/', views.delete_profile, name="delete_profile"),
     path('cities/', views.cities, name="cities"),
+    path('friendlist/', views.friendlist, name="friendlist"),
 ]

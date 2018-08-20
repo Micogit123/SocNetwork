@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
 
-{% block head%}
-<title>Profile</title>
+{% block head %}
+<title>Other Profiles</title>
 {% endblock %}
 
-{% block body%}
+{% block body %}
 <div class="container">
+	
 	<div class="card card mx-auto col-xs-16 col-sm-12 col-md-8 col-lg-6">
 		<div class="card-header">
 	    <ul class="nav nav-pills card-header-pills">
 	      <li class="nav-item">
 	        <div class="dropdown">
 			    <div data-toggle="dropdown">
-			      <a class="nav-link active" href="/profile"><i class="fa fa-user" aria-hidden="true"></i>  
+			      <a class="nav-link" href="/profile"><i class="fa fa-user" aria-hidden="true"></i>  
 			      	{{user.username| title}}'s Profile 
 			      	<i class="fa fa-caret-down"></i>
 			      </a>
@@ -29,22 +30,44 @@
 	        <a class="nav-link" href="/other_profiles/">Other profiles</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="/friendlist/">Friend list</a>
+	        <a class="nav-link active" href="">Friend list</a>
 	      </li>
 	    </ul>
 	  </div>
    		<div class="card-body ">
 	        <p class="card-text">
-				<img src="/static/images/profile-pic.png" width="150px" height="150px">
-				<h1>{{user.username|title}}</h1>
-				<hr>
-				<p>First name: {{user.first_name}}</p>
-				<p>Last name: {{user.last_name}}</p>
-				<p>Email: {{user.email}}</p>
-				<p>Country: {{data.country}}</p>
-				<p>City: {{data.city}}</p>		
+				<div class="table-responsive">
+				<table class="table">
+				  <thead class="thead-light">
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Username</th>
+				      <th scope="col">First_name</th>
+				      <th scope="col">Last_name</th>
+				      <th scope="col">Email</th>
+				      <th scope="col">Country</th>
+				      <th scope="col">City</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	{% for user in users %}
+				    <tr>
+					      <th scope="row">{{forloop.counter}}</th>
+					      <td>{{user.username}}</td>
+					      <td>{{user.first_name}}</td>
+					      <td>{{user.last_name}}</td>
+					      <td>{{user.email}}</td>
+					      <td>{{user.userinformation.city}}</td>
+					      <td>{{user.userinformation.country}}</td>
+					      
+			      	{% endfor %}
+
+				  </tbody>
+				</table>
+			</div>
 			</p>
 		</div>
 	</div>
 </div>
+
 {% endblock %}

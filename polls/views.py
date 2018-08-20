@@ -10,6 +10,7 @@ from django.db.models import Q
 from django.contrib import messages
 from django.http import JsonResponse
 from django.core import serializers
+from django.http import HttpResponseRedirect
 
 
 def register(request):
@@ -76,10 +77,30 @@ def change_password(request):
 
 
 @login_required(login_url='/login')
-def other_profiles(request):
+def friendlist(request):
     users = User.objects.select_related('userinformation').filter(~Q(id=request.user.id))
     args = {'users': users}
-    return render(request, 'polls/other_profiles.html', args)
+    return render(request, 'polls/friendlist.html', args)
+
+
+@login_required(login_url='/login')
+def other_profiles(request):
+    if request.method == 'POST':
+        srch = request.POST['srch']
+
+        if srch:
+            match = User.objects.filter(Q(email__iexact=srch) | 
+                                        Q(username__istartswith=srch) & 
+                                        ~Q(username__icontains=request.user.username)
+                                     )   
+            if match:
+                return render(request, 'polls/other_profiles.html', {'found': match})
+            else:
+                messages.error(request, 'No result found')
+        else:
+            return HttpResponseRedirect('/other_profiles/')
+
+    return render(request, 'polls/other_profiles.html')
 
 
 @login_required(login_url='/login')
@@ -96,5 +117,6 @@ def cities(request):
     data = serializers.serialize('json', cities)
     
     return JsonResponse(data, content_type="application/json", safe=False)
+
 
 
