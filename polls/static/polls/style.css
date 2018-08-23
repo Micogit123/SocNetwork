@@ -1,9 +1,52 @@
 body{
-	background: url("/static/images/backimg.jpg") no-repeat center center fixed;
-	-webkit-background-size: cover;
-  	-moz-background-size: cover;
-  	-o-background-size: cover;
-  	background-size: cover;
+  	margin: 0;
+  	line-height: 1.5;
+  	overflow-x: hidden;
+}
+
+.v-header{
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	color: #FFFFFF;
+}
+
+.container{
+	max-width: 960px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin: auto;
+	z-index: 2;
+}
+
+.fullscreen-video-wrap{
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.header-overlay{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #8A8A8A;
+	opacity: 0.85;
+}
+
+.header-content{
+	z-index: 2;
+}
+
+@media(max-width: 960px){
+	.container{
+		padding-right: 3rem;
+		padding-left: 3rem;
+	}
 }
 
 h1{
@@ -39,13 +82,14 @@ h2{
 
 .card{
 	margin-top: 50px;
-	border-radius: 25px;
-	background-color: #E9E9ED;
+	background-color: transparent;
+	border: 0;
 }
 .card-body{
 	align-self: center;
 	color: black;
 	border-radius: 25px;
+	text-align: left;
 }
 .home-buttons{
 	background-color: #6D6D6D;
@@ -117,9 +161,9 @@ h2{
 .fotter-bottom p {
 	line-height: 50px;
 }
-.button{
-	margin-top: 30px;
-	margin-left: 500px ;
+.home-button{
+	margin-top: 10px;
+	margin-left: 360px;
 }
 .btn{
 	border: 1px solid white;
@@ -127,18 +171,30 @@ h2{
 	color: white;
 	text-decoration: none;
 	font-size: 13px;
-
 }
-.btn-one{
 
-}
 .btn-one:hover{
 	background-color: darkblue;
 }
+
 #home-par{
-	text-align: center;
 	font-size: 50px;
-	padding: 140px 0px;
-	color: white;
+	color: black;
 	font-family: cursive;
+	text-align: center;
+}
+
+#demo{
+	color: black;
+}
+
+.input-group-text:hover{
+	background-color: #9F9F9F;
+}
+.search-button{
+	padding: 10px 10px;
+}
+.btn-secondary{
+	padding: 10px 7px;
+	border: 0px;
 }

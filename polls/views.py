@@ -93,7 +93,7 @@ def other_profiles(request):
         srch = request.POST['srch']
 
         if srch:
-            match = User.objects.filter(Q(email__iexact=srch) | 
+            match = User.objects.filter(Q(email__iexact=srch) & ~Q(email__iexact=request.user.email) | 
                                         Q(username__istartswith=srch) & 
                                         ~Q(username__icontains=request.user.username)
                                      )   

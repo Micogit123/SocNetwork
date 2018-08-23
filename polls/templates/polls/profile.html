@@ -7,34 +7,7 @@
 {% block body%}
 <div class="container">
 
-	<div class="card card mx-auto col-xs-16 col-sm-12 col-md-8 col-lg-6">
-		<div class="card-header">
-	    <ul class="nav nav-pills card-header-pills">
-	      <li class="nav-item">
-	        <div class="dropdown">
-			    <div data-toggle="dropdown">
-			      <a class="nav-link active"><i class="fa fa-user" aria-hidden="true"></i>  
-			      	{{user.username| title}}'s Profile 
-			      	<i class="fa fa-caret-down"></i>
-			      </a>
-			    </div>
-			    <div class="dropdown-menu">
-			      <a class="dropdown-item " href="/profile"><i class="fas fa-user-circle"></i> View profile</a>
-			      <a class="dropdown-item " href="/profile/edit/"><i class="far fa-edit"></i> Edit profile</a>
-			      <a class="dropdown-item" href="/change-password"><i class="fa fa-lock" aria-hidden="true"></i> Change password</a>
-			      <a class="dropdown-item " href="/delete_profiles"><i class="far fa-trash-alt"></i> Delete profile</a>
-			      <a class="dropdown-item" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>  Log out</a>
-			    </div>
-			</div>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="/other_profiles/">Other profiles</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="/friendlist">Friend list</a>
-	      </li>
-	    </ul>
-	  </div>
+	<div class="card card mx-auto col-xs-16 col-sm-12 col-md-8 col-lg-8">
    		<div class="card-body ">
 	        <p class="card-text">
 				<img src="/static/images/profile-pic.png" width="150px" height="150px">

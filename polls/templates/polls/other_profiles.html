@@ -5,96 +5,65 @@
 {% endblock %}
 
 {% block body %}
-<div class="containter">
-	<div class="card card mx-auto col-xs-16 col-sm-12 col-md-8 col-lg-6">
-		<div class="card-header">
-	    <ul class="nav nav-pills card-header-pills">
-	      <li class="nav-item">
-	        <div class="dropdown">
-			    <div data-toggle="dropdown">
-			      <a class="nav-link" href="/profile/"><i class="fa fa-user" aria-hidden="true"></i>  
-			      	{{user.username| title}}'s Profile 
-			      	<i class="fa fa-caret-down"></i>
-			      </a>
-			    </div>
-			    <div class="dropdown-menu">
-			      <a class="dropdown-item " href="/profile"><i class="fas fa-user-circle"></i> View profile</a>
-			      <a class="dropdown-item " href="/profile/edit/"><i class="far fa-edit"></i> Edit profile</a>
-			      <a class="dropdown-item" href="/change-password"><i class="fa fa-lock" aria-hidden="true"></i> Change password</a>
-			      <a class="dropdown-item " href="/delete_profiles"><i class="far fa-trash-alt"></i> Delete profile</a>
-			      <a class="dropdown-item" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>  Log out</a>
-			    </div>
-			</div>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link active" href="/other_profiles/">Other profiles</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="/friendlist/">Friend list</a>
-	      </li>
-	    </ul>
-	  </div>
-   		<div class="card-body ">
-	    <p class="card-text">
-		<h1>Search other profiles</h1>
-		<form method="post" action="/other_profiles/">
-			{% csrf_token %}
-			<div class="row">
-		        <div class="col-lg-12">
-		            <div class="input-group">
-		                <input class="form-control border-secondary py-2" type="text" name="srch" placeholder="Enter username or email">
-		                <div class="input-group-append">
-		                    <button class="btn btn-secondary type="submit">
-		                        <i class="fa fa-search"></i>
-		                    </button>
-		                </div>
-		            </div>
-		        </div>
-	    	</div>
-		</form>
-		<div>
-			{% if messages %}
-				<ul class="messages"><br>
-					{% for message in messages %}
-					<li>{{message}}</li>
-					{% endfor %}
-				</ul>
-				{% endif %}
-		</div><br>
 
-		<div>
-			{% if found %}
-				{% for k in found%}
-				<table border="0px" width="300px">
-					<tr>
-						<td>Username</td>
-						<td>{{k.username}}</td>
-					</tr>
-					<tr>
-						<td>Email</td>
-						<td>{{k.email}}</td>
-					</tr>
-					<tr>
-						{% if user in friendslist%}
-						<td>
-							<button class="btn btn-success">Add Friend</button>
-						</td>
-						{% else %}
-						<td>
-							<button class="btn btn-success disabled">Already a friend</button>
-						</td>
-						{% endif %}
-					</tr>
-				</table>
-				<hr>
-				{% endfor%}
-			{% endif %}
-		</div>
-		</p>
-		</div>
+<div class="container">
+<div class="card card mx-auto col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <div class="card-body ">
+        <p class="card-text">
+        	<h1>Search other users </h1><hr>
+
+			{{form.errors}}
+			<form method="post" action="/other_profiles/">
+			{% csrf_token %}
+				<div class="input-group md-form form-sm form-2 pl-0">
+				    <input class="form-control" type="text" name="srch" placeholder="Enter username or username" aria-label="Search">
+				    <div class="input-group-append">
+				        <button class="input-group-text" id="basic-text1" type="submit"><i class="fa fa-search text-grey" aria-hidden="true"></i></button>
+				    </div>
+				</div>
+			</form>
+			<div>
+				{% if messages %}
+					<ul class="messages"><br>
+						{% for message in messages %}
+						<li>{{message}}</li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+			</div><br>
+
+			<div>
+				{% if found %}
+					{% for k in found%}
+					<table border="0px" width="300px">
+						<tr>
+							<td>Username</td>
+							<td>{{k.username}}</td>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td>{{k.email}}</td>
+						</tr>
+						<tr>
+							{% if user in friendslist%}
+							<td>
+								<button class="btn btn-success">Add Friend</button>
+							</td>
+							{% else %}
+							<td>
+								<button class="btn btn-success disabled">Already a friend</button>
+							</td>
+							{% endif %}
+						</tr>
+					</table>
+					<hr>
+					{% endfor%}
+				{% endif %}
+			</div>
+	       	</p>
+      </div>
 	</div>
 </div>
-
 
 
 {% endblock %}
