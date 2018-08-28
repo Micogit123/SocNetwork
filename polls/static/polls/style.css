@@ -109,11 +109,13 @@ h2{
 	height: 70px;
 	margin: auto;
 	background-color: #232323;
+	z-index: 2;
 }
 .footer-social-icons{
 	width: 100%;
 	height: auto;
 	margin: auto;
+	z-index: 2;
 }
 .footer-social-icons ul{
 	margin: 0px;
@@ -160,6 +162,7 @@ h2{
 }
 .fotter-bottom p {
 	line-height: 50px;
+	z-index: 2;
 }
 .home-button{
 	margin-top: 10px;

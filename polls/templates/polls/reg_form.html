@@ -13,7 +13,7 @@
     <p class="card-text">
   		<h1><i class="fa fa-user-plus" aria-hidden="true"></i> Register</h1><hr>
   		{{user_form.errors}}
-  		 <form method="post" data-cities-url="{% url 'cities' %}">
+  		 <form method="post" data-cities-url="{% url 'cities' %}" id="register">
      		{% csrf_token %}			
   			<p><i class="fa fa-user" aria-hidden="true"></i> Username: {{user_form.username}}*</p>
   			<p><i class="fa fa-user" aria-hidden="true"></i> First name: {{user_form.first_name}}</p>
@@ -61,7 +61,14 @@
           });
 
       })
+
+      $( document ).on('submit', '#register', function(){
+  
+             alert("You were succesfully register!")
+     
+      });
   </script>
+
 
 
 {% endblock %}

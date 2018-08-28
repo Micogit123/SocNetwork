@@ -43,8 +43,8 @@
 						      <a class="dropdown-item " href="/profile"><i class="fas fa-user-circle"></i> View profile</a>
 						      <a class="dropdown-item " href="/profile/edit/"><i class="far fa-edit"></i> Edit profile</a>
 						      <a class="dropdown-item" href="/change-password"><i class="fa fa-lock" aria-hidden="true"></i> Change password</a>
-						      <a class="dropdown-item " href="/delete_profiles"><i class="far fa-trash-alt"></i> Delete profile</a>
-						      <a class="dropdown-item " href="/logout"><i class="fa fa-sign-out"></i>  Log out</a>
+						      <a class="dropdown-item " onclick="return confirm_delete()"><i class="far fa-trash-alt"></i> Delete profile</a>
+						      <a class="dropdown-item " onclick="return confirm_logout()"><i class="fa fa-sign-out"></i>  Log out</a>
 						    </div>
 						  </div>
 					</li>
@@ -78,18 +78,43 @@
 	<h1>Base</h1>
 	{% endblock %}
 </body>
-
-<!--<div class="footer-main-div">
-	<div class="footer-social-icons">
-		<ul>
-			<li><a href="#" target="blank"><i class="fa fa-facebook"></i></a></li>
-			<li><a href="#" target="blank"><i class="fa fa-twitter"></i></a></li>
-			<li><a href="#" target="blank"><i class="fa fa-google-plus"></i></a></li>
-			<li><a href="#" target="blank"><i class="fa fa-youtube"></i></a></li>
-		</ul>
+<!--	<div class="footer-main-div">
+		<div class="footer-social-icons">
+			<ul>
+				<li><a href="#" target="blank"><i class="fa fa-facebook"></i></a></li>
+				<li><a href="#" target="blank"><i class="fa fa-twitter"></i></a></li>
+				<li><a href="#" target="blank"><i class="fa fa-google-plus"></i></a></li>
+				<li><a href="#" target="blank"><i class="fa fa-youtube"></i></a></li>
+			</ul>
+		</div>
 	</div>
-</div>
-    <div class="footer-bottom">
-    	<p>© 2018 Copyright: Mislav Vukašina</p>
-    </div>-->
+	    <div class="footer-bottom">
+	    	<p>© 2018 Copyright: Mislav Vukašina</p>
+	    </div>
+</div>-->
+
+<script type="text/javascript">
+function confirm_logout() {
+	var r = confirm("Are you sure you wanna logout?");
+		if(r === true){
+			window.location.href = '/logout';
+
+		}
+             if (r === false)
+                return false;
+
+}
+
+function confirm_delete() {
+	var r = confirm("Are you sure you wanna delete profile?");
+		if(r === true){
+			window.location.href = '/delete_profile';
+
+		}
+             if (r === false)
+                return false;
+
+}
+</script>
+
 

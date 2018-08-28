@@ -29,7 +29,7 @@ def register(request):
             user = User.objects.create_user(username=user_form.cleaned_data['username'],
                                  first_name=user_form.cleaned_data['first_name'],
                                  last_name=user_form.cleaned_data['last_name'],
-                                 password=user_form.cleaned_data['password1'],
+                                 password=user_form.cleaned_data['password2'],
                                  email=user_form.cleaned_data['email'])
 
             UserInformation.objects.create(user=user, country=user_form.cleaned_data['country'], city=user_form.cleaned_data['city'])
@@ -109,8 +109,8 @@ def other_profiles(request):
 
 @login_required(login_url='/login')
 def delete_profile(request):
-    request.user.delete() 
-    return render(request, 'polls/delete_profile.html')
+    request.user.delete()
+    return render(request, 'polls/home.html')
 
 
 def cities(request):
@@ -121,6 +121,5 @@ def cities(request):
     data = serializers.serialize('json', cities)
     
     return JsonResponse(data, content_type="application/json", safe=False)
-
 
 

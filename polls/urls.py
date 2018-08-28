@@ -8,7 +8,7 @@ urlpatterns = [
     path('',views.home, name='home'),
     path('profile/', views.profile, name='profile'),
     path('login/', login, {'template_name': 'polls/login.html'}),
-    path('logout/', logout, {'template_name': 'polls/logout.html'}),
+    path('logout/', logout, {'template_name': 'polls/home.html'}),
     path('register/', views.register, name="register"),
     path('profile/', views.profile, name='profile'),
     path('profile/edit/', views.profile_edit, name="profile_edit"),
@@ -22,4 +22,5 @@ urlpatterns = [
     path('delete_profile/', views.delete_profile, name="delete_profile"),
     path('cities/', views.cities, name="cities"),
     path('friendlist/', views.friendlist, name="friendlist"),
+
 ]

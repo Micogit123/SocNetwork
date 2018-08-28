@@ -12,7 +12,7 @@
 				<h1><i class="far fa-edit"></i> Edit profile</h1>
 				<hr>
 				{{edit_form.errors}}
-				<form method="post">
+				<form method="post" id="edit">
 					{% csrf_token %}
 					<p><i class="fa fa-user" aria-hidden="true"></i> First name: {{edit_form.first_name}}</p>
 		    		<p><i class="fa fa-user" aria-hidden="true"></i> Last name: {{edit_form.last_name}}</p>
@@ -35,27 +35,33 @@
 	</div>
 </div>
 
-	<script>
-      $('#countries').on('change', function() {
+<script>
+  $('#countries').on('change', function() {
 
-          $('#cities').find('option:not(:first)').remove();
+      $('#cities').find('option:not(:first)').remove();
 
-          $.ajax({
-            url: '/cities/',
-            data: {
-              'country': this.value
-            },
-            dataType: 'json',
-            success: function (data) {
+      $.ajax({
+        url: '/cities/',
+        data: {
+          'country': this.value
+        },
+        dataType: 'json',
+        success: function (data) {
 
-              var json_cities = jQuery.parseJSON(data);
+          var json_cities = jQuery.parseJSON(data);
 
-               for(var i = 0; i < json_cities.length; i++){
-                  $('#cities').append('<option>' + json_cities[i].fields.name + '</option>');
-               }
-            }
-          });
+           for(var i = 0; i < json_cities.length; i++){
+              $('#cities').append('<option>' + json_cities[i].fields.name + '</option>');
+           }
+        }
+      });
 
-      })
+  })
+
+  $( document ).on('submit', '#edit', function(){
+
+         alert("You profile was succesfully edited!")
+ 
+});
   </script>
 {% endblock %}
