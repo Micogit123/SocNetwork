@@ -21,10 +21,10 @@
 <body class="v-header container">
 		<div class="fullscreen-video-wrap">
 			<video src="/static/video/code.mov" autoplay="true" loop="true"></video>
-		</div>
+		</div>	
 		<div class="header-overlay">
 		<div class="header-content">
-			<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+			<nav class="navbar navbar-expand-sm navbar-dark bg-dark">	
 			<a class="navbar-brand" href=""> <i class="fas fa-signal" style="color: orange"></i> Social network</a>
 
 			{% if user.is_authenticated %}
@@ -120,7 +120,11 @@ function confirm_delete() {
 
 }
 
-$("a").click
+$( '.navbar-dark .navbar-nav .nav-link' ).on( 'click', function () {
+	$( '.navbar-dark .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
+	$( this ).parent( 'li' ).addClass( 'active' );
+});
+
 </script>
 
 
