@@ -9,7 +9,7 @@
 <div class="home-center">
 	<p id="home-par">Are you Ready?</p>
 	<div class="home-button">
-		<button type="button" class="btn" data-toggle="collapse" data-target="#demo">Read More</button>
+		<button type="button" class="btn" data-toggle="collapse" id="jQueryColorChange" data-target="#demo">Read More</button>
 	</div><br>
 	<div id="demo" class="collapse">
 		CSS is designed primarily to enable the separation of document content from document presentation, including aspects such as the layout, colors, and fonts. This separation can improve content accessibility, provide more flexibility and control in the specification of presentation characteristics, enable multiple HTML pages to share formatting by specifying the relevant CSS in a separate .css file, and reduce complexity and repetition in the structural content.
@@ -27,9 +27,15 @@ $(document).ready(function(){
   $("#demo").on("hide.bs.collapse", function(){
     $(".btn").text('Read More');
   });
+
   $("#demo").on("show.bs.collapse", function(){
     $(".btn").text('Read Less');
   });
+
+  $( "#jQueryColorChange" ).click(function() {
+  		$(this).toggleClass( "selected" );
+  });
+
 });
 </script>
 
