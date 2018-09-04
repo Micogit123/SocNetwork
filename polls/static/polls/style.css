@@ -109,7 +109,10 @@ h2{
 .navbar-dark .navbar-brand{
   font-family: Audiowide;
   text-shadow: 0 0 10px #000000, 0 0 10px #000000, 0 0 15px #000000, 0 0 20px #000000, 
-    0 0 35px #FF9900, 0 0 40px #FF9900, 0 0 50px #FF9900, 0 0 75px #FF9900;
+    0 0 35px #000000, 0 0 40px #FF9900, 0 0 50px #FF9900, 0 0 75px #FF9900;
+}
+.navbar-dark .navbar-brand:hover{
+	color: white;
 }
 .navbar-collapse{
 	margin-right: 20px;
@@ -118,7 +121,7 @@ h2{
 	letter-spacing: 1px;
 }
 .navbar-dark .navbar-nav li.active>.nav-link{
-	color: darkorange;
+	color: orange;
 }
 .footer{
 	width: 100%;
@@ -232,7 +235,6 @@ p:nth-child(5) a:hover {
 	color: black;
 	text-decoration: none;
 	font-size: 13px;
-	background-color: darkorange;
 }
 .btn:hover{
 	background-color: orange;
