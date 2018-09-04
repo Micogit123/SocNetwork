@@ -93,9 +93,8 @@ def other_profiles(request):
         srch = request.POST['srch']
 
         if srch:
-            match = User.objects.filter(Q(email__iexact=srch) & ~Q(email__iexact=request.user.email) | 
-                                        Q(username__istartswith=srch) & 
-                                        ~Q(username__icontains=request.user.username)
+            match = User.objects.filter(Q(first_name__istartswith=srch) & 
+                                        ~Q(first_name__icontains=request.user.first_name)
                                      )   
             if match:
                 return render(request, 'polls/other_profiles.html', {'found': match})
@@ -105,6 +104,17 @@ def other_profiles(request):
             return HttpResponseRedirect('/other_profiles/')
 
     return render(request, 'polls/other_profiles.html')
+
+
+@login_required(login_url='/login')
+def search_users(request):
+    first_name = request.GET.get('first_name', None)
+    last_name = request.GET.get('last_name', None)
+    match = User.objects.filter(Q(first_name__istartswith=first_name) & 
+                                    ~Q(first_name__icontains=request.user.first_name))   
+
+    data = serializers.serialize('json', match)        
+    return JsonResponse(data, content_type="application/json", safe=False)
 
 
 @login_required(login_url='/login')

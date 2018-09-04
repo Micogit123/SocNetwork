@@ -13,14 +13,12 @@
         	<h1>Search other users </h1><hr>
 
 			{{form.errors}}
-			<form method="post" action="/other_profiles/">
+			<form method="post" action="/other_profiles/" autocomplete="off">
 			{% csrf_token %}
 				<div class="input-group md-form form-sm form-2 pl-0">
-				    <input class="form-control" type="text" name="srch" placeholder="Enter username or username" aria-label="Search">
-				    <div class="input-group-append">
-				        <button class="input-group-text" id="basic-text1" type="submit"><i class="fa fa-search text-grey" aria-hidden="true"></i></button>
-				    </div>
+				    <input class="form-control" type="text" name="srch" placeholder="Search user's first name" aria-label="Search" id="search">
 				</div>
+				<ul class="list-group" id="result"></ul>
 			</form>
 			<div>
 				{% if messages %}
@@ -37,14 +35,10 @@
 					{% for k in found%}
 					<table border="0px" width="300px">
 						<tr>
-							<td>Username</td>
-							<td>{{k.username}}</td>
-						</tr>
-						<tr>
-							<td>Email</td>
-							<td>{{k.email}}</td>
-						</tr>
-						<tr>
+							<td>
+								<img src="/static/images/profile-pic.png" width="50px" height="50px"> {{k.first_name|title}} {{k.last_name|title}}  
+							</td>
+
 							{% if user in friendslist%}
 							<td>
 								<button class="btn btn-success">Add Friend</button>
@@ -65,5 +59,32 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#search').keyup(function(){
+		$('#result').html('');
+		var searchField = $('#search').val();
+		var expression = new RegExp(searchField, "i");
+
+		$.ajax({
+            url: '/search_users/',
+            data: {
+            	'first_name': this.value,
+            	'last_name': this.value
+            },
+            dataType: 'json',
+            success: function (data) {
+
+              var json_users = jQuery.parseJSON(data);
+
+               for(var i = 0; i < json_users.length; i++){
+                  $('#result').append('<li class="list-group-item">' + json_users[i].fields.first_name + ' ' +json_users[i].fields.last_name + '</li>');
+               }
+            }	
+          });
+
+      })
+	})
+</script>
 
 {% endblock %}

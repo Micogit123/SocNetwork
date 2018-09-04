@@ -12,7 +12,7 @@
 				<h1><i class="far fa-edit"></i> Edit profile</h1>
 				<hr>
 				{{edit_form.errors}}
-				<form method="post" id="edit">
+				<form method="post" id="edit" autocomplete="off">
 					{% csrf_token %}
 					<p><i class="fa fa-user" aria-hidden="true"></i> First name: {{edit_form.first_name}}</p>
 		    		<p><i class="fa fa-user" aria-hidden="true"></i> Last name: {{edit_form.last_name}}</p>

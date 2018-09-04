@@ -22,5 +22,5 @@ urlpatterns = [
     path('delete_profile/', views.delete_profile, name="delete_profile"),
     path('cities/', views.cities, name="cities"),
     path('friendlist/', views.friendlist, name="friendlist"),
-
+    path('search_users/', views.search_users, name="search_users"),
 ]

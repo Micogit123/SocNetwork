@@ -26,11 +26,13 @@ $(document).ready(function(){
 
   $("#demo").on("hide.bs.collapse", function(){
     $(".btn").text('Read More');
+    $( ".btn" ).click(function() {
+ 	 $(this).toggleClass( "selected" );
+});
   });
   $("#demo").on("show.bs.collapse", function(){
     $(".btn").text('Read Less');
   });
-
 });
 </script>
 
