@@ -233,9 +233,9 @@ h2{
 .btn{
 	border: 1px solid white;
 	padding: 10px 30px;
-	color: black;
+	color: white;
 	text-decoration: none;
-	font-size: 13px;
+	font-size: 14px;
 	background-color: darkorange;
 }
 .btn:hover{
@@ -253,18 +253,17 @@ h2{
 }
 #home-par{
 	font-size: 50px;
-	color: #2D2825;
+	color: #FFFFFF;
 	font-family: cursive;
 	text-align: center;
+	font-weight: bold;
 }
 .selected {
     background-color: orange;
 	color: black;
 	border-color: black;
 }
-#demo{
-	color: black;
-}
+
 
 .input-group-text:hover{
 	background-color: #9F9F9F;
