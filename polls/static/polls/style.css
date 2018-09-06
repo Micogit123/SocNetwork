@@ -3,7 +3,6 @@ body{
   	line-height: 1.5;
   	overflow-x: hidden;
 }
-
 .v-header{
 	height: 100vh;
 	display: flex;

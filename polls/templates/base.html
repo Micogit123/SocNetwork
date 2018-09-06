@@ -37,8 +37,8 @@
 						      	Login as:  {{user.username| title}} 
 						      	<i class="fa fa-caret-down"></i>
 						      </a>
-						    </div>
-						    <div class="dropdown-menu">
+						    </div>	
+						    <div class="dropdown-menu" style="color:black">
 						      <a class="dropdown-item " href="/profile"><i class="fas fa-user-circle"></i> View profile</a>
 						      <a class="dropdown-item " href="/profile/edit/"><i class="far fa-edit"></i> Edit profile</a>
 						      <a class="dropdown-item" href="/change-password"><i class="fa fa-lock" aria-hidden="true"></i> Change password</a>
@@ -83,16 +83,16 @@
 				<div class="collapse navbar-collapse justify-content-center" id="nav-content">
 			        <ul class="navbar-nav">
 			        	<li class="nav-item">
-			                <a class="nav-link" href="#register">Register</a>
+			                <a class="nav-link" href="#register" >Register</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="#about">About us </a>
+			                <a class="nav-link" href="#about" >About us </a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="#how-it-works">How it works</a>
+			                <a class="nav-link" href="#how-it-works" >How it works</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link" href="#contact">Contact</a>
+			                <a class="nav-link" href="#contact" >Contact</a>
 			            </li>
 			        </ul>
 	    		</div> 
@@ -153,11 +153,24 @@ $( '.navbar-dark .navbar-nav .nav-link' ).on( 'click', function () {
 		$( this ).parent( 'li' ).addClass( 'active' );
 });
 
-$( document ).on('submit', '#login', function(){
+$(document).on('submit', '#login', function(){
 	
              alert("You were succesfully login!")
      
  });
+
+$(document).ready(function(){
+	$('.nav-item').click(function(e){
+
+		var headerHeight = $('header').outerHeight();
+		var linkhref = $(this).attr('href');
+		$('html, body').animate({
+			scrollTop: $(linkhref).offset().top - headerHeight
+		}, 1000);
+
+		e.preventDefault();
+	});
+});
 </script>
 
 
