@@ -5,9 +5,8 @@ from django.contrib.auth.views import (login, logout, password_reset, password_r
 
 
 urlpatterns = [
-    path('',views.home, name='home'),
     path('profile/', views.profile, name='profile'),
-    path('login/', login, {'template_name': 'polls/login.html'}),
+    path('', login, {'template_name': 'polls/home.html'}),
     path('logout/', logout, {'template_name': 'polls/home.html'}),
     path('register/', views.register, name="register"),
     path('profile/', views.profile, name='profile'),

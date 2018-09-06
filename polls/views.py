@@ -12,10 +12,6 @@ from django.http import JsonResponse
 from django.core import serializers
 from django.http import HttpResponseRedirect
 
-
-def home(request):
-    return render(request, 'polls/home.html')
-
     
 def register(request):
     user_form = RegisterForm()
