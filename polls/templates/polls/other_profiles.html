@@ -16,7 +16,7 @@
 			<form method="post" action="/other_profiles/" autocomplete="off">
 			{% csrf_token %}
 				<div class="input-group md-form form-sm form-2 pl-0">
-				    <input class="form-control" type="text" name="srch" placeholder="Search user's first name" aria-label="Search" id="search">
+				    <input class="form-control" type="text" name="srch" placeholder="Search" aria-label="Search" id="search">
 				</div>
 				<ul class="list-group" id="result"></ul>
 			</form>
@@ -45,7 +45,7 @@
 							</td>
 							{% else %}
 							<td>
-								<button class="btn btn-success disabled">Already a friend</button>
+								<button class="btn btn-success disabled" style="width: 120px; height: 40px; padding: 0;">Already a friend</button>
 							</td>
 							{% endif %}
 						</tr>
@@ -63,8 +63,6 @@
 $(document).ready(function(){
 	$('#search').keyup(function(){
 		$('#result').html('');
-		var searchField = $('#search').val();
-		var expression = new RegExp(searchField, "i");
 
 		$.ajax({
             url: '/search_users/',
@@ -75,10 +73,13 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (data) {
 
+              closeAllLists();
               var json_users = jQuery.parseJSON(data);
 
+              if(json_users.length > 0){
                for(var i = 0; i < json_users.length; i++){
                   $('#result').append('<li class="list-group-item">' + json_users[i].fields.first_name + ' ' +json_users[i].fields.last_name + '</li>');
+               }
                }
             }	
           });
